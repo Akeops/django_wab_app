@@ -1,8 +1,11 @@
 from django.shortcuts import render
 
+from listings.models import Band
+
 
 def index(request):
-    return render(request, "listings/index.html")
+    bands = Band.objects.all()
+    return render(request, "listings/index.html", context={'bands': bands})
 
 def article(request, numero_article):
     if numero_article in ["01", "02", "03"]:
