@@ -120,9 +120,9 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "merchex/static/css")
+    os.path.join(BASE_DIR, "merchex/static/css"),
+    os.path.join(BASE_DIR, "listings/static/css")
 ]
-print(BASE_DIR)
 APPEND_SLASH = True
 
 # Default primary key field type
