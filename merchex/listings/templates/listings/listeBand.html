@@ -1,0 +1,16 @@
+{% extends 'listings/base.html' %}
+{% load static %}
+{% block content %}
+<title>Mon listings</title>
+<link rel="stylesheet" href="{% static 'listings/style.css' %}">
+
+<div class="container">
+    <h1>Groupes</h1>
+    <ul>
+        {% for band in bands %}
+                <li>{{ band.name}}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
