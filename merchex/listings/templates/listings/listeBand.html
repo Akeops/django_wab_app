@@ -8,7 +8,14 @@
     <h1>Groupes</h1>
     <ul>
         {% for band in bands %}
-                <li>{{ band.name}}</li>
+                <li><a href="{% url 'detail-groupe' band.id %}">{{ band.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h1>Musiques</h1>
+    <ul>
+        {% for song in songs %}
+                <li><a href="{% url 'detail-groupe' song.band.id %}">{{ song.name }}</a></li>
         {% endfor %}
     </ul>
 </div>

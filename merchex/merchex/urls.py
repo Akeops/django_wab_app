@@ -21,7 +21,7 @@ from .views import index, aboutUs
 
 urlpatterns = [
     path('', index, name="index"),
-    path('listings/', include("listings.urls")),
+    path('groupes/', include("listings.urls")),
     path("admin/", admin.site.urls),
     path('about-us/', aboutUs)
 

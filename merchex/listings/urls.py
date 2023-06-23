@@ -1,8 +1,9 @@
 from django.urls import path
-
-from .views import index, article
+from .views import listeGroupeEtSong, detailGroupe, contact
 
 urlpatterns = [
-    path('', index, name="listings-index"),
-    path('article-<str:numero_article>/', article, name="listings-article")
+    path('', listeGroupeEtSong, name="liste-groupes"),
+    path('<int:id>/', detailGroupe, name="detail-groupe"),
+    path('contact/', contact, name="listings-contact"),
 ]
+

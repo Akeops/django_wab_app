@@ -1,14 +1,22 @@
 from django.shortcuts import render
+from listings.models import Band, Song
 
-from listings.models import Band, Titre
-
-
-def index(request):
+def listeGroupeEtSong(request):
     bands = Band.objects.all()
-    titres = Titre.objects.all()
-    return render(request, "listings/index.html", context={'bands': bands , 'titres': titres})
+    songs = Song.objects.all()
+    return render(request, "listings/listeBand.html", context={'bands': bands, 'songs': songs})
 
-def article(request, numero_article):
-    if numero_article in ["01", "02", "03"]:
-        return render(request, f"listings/article_{numero_article}.html")
-    return render(request, f"listings/article_not_found.html")
+def detailGroupe(request, id):
+    band = Band.objects.get(id=id)
+    return render(request, 'listings/detailGroupe.html', {'band' : band})
+
+def listeSong(request):
+    songs = Song.objects.all()
+    return render(request, 'listings/listeBand.html', context={'songs': songs})
+def contact(request):
+    return render(request, "listings/contact.html")
+
+
+
+
+

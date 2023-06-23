@@ -121,7 +121,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "merchex/static/css"),
-    os.path.join(BASE_DIR, "listings/static/css")
+    os.path.join(BASE_DIR, "listings/static")
 ]
 APPEND_SLASH = True
 
