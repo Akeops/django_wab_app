@@ -8,11 +8,13 @@ def listeGroupeEtSong(request):
 
 def detailGroupe(request, id):
     band = Band.objects.get(id=id)
-    return render(request, 'listings/detailGroupe.html', {'band' : band})
+    songs = Song.objects.all()
+    return render(request, 'listings/detailGroupe.html', {'band' : band, 'songs': songs})
 
 def listeSong(request):
     songs = Song.objects.all()
     return render(request, 'listings/listeBand.html', context={'songs': songs})
+
 def contact(request):
     return render(request, "listings/contact.html")
 

@@ -8,12 +8,20 @@
   <li>Année de formation : {{ band.year_formed }}</li>
   <li>Actif : {{ band.active }}</li>
   {% if band.official_homepage %}
-    <li><a href = "{{ band.official_homepage}}">band.official_homepage</a></li>
+    <li><a href = "{{ band.official_homepage }}">band.official_homepage</a></li>
   {% endif %}
 </ul>
 
 <p>{{ band.biography }}</p>
 
+<h1>Musiques crées par {{ band.name }}</h1>
+    <ul>
+        {% for song in songs %}
+          {% if song.band.id == band.id %}
+                <li>{{ song.name }}</a></li>
+          {% endif %}
+        {% endfor %}
+    </ul>
 <a href="{% url 'liste-groupes' %}">Retour à la liste</a>
 
 {% endblock %}
