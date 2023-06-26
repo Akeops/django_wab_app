@@ -2,9 +2,13 @@
 
 {% block content %}
 
-    <title>Me contacter</title>
+<p>Nous sommes là pour vous aider.</p>
 
-    <h3>Mes réseaux:</h3>
-    <p>Je dois mettre tous mes réseaux et mon adresse email ainsi que mon github</p>
+<form action="" method="post" novalidate>
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Envoyer">
+</form>
 
 {% endblock %}
+
