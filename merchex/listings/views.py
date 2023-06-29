@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from listings.models import Band, Song
-from listings.forms import ContactUsForm
+from listings.forms import ContactUsForm, BandForm, SongForm
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 
@@ -42,3 +42,35 @@ def contact(request):
           'listings/contact.html',
           {'form': form})  # passe ce formulaire au gabarit
 
+def emailSent(request):
+    return render(request, 'listings/done.html')
+
+def bandCreate(request):
+    if request.method == 'POST':
+        form = BandForm(request.POST)
+        if form.is_valid():
+            # créer une nouvelle « Band » et la sauvegarder dans la db
+            band = form.save()
+            # redirige vers la page de détail du groupe que nous venons de créer
+            # nous pouvons fournir les arguments du motif url comme arguments à la fonction de redirection
+            return redirect('detail-groupe', band.id)
+
+    else:
+        form = BandForm()
+    return render(request,
+            'listings/band_create.html',
+            {'form': form})
+
+def songCreate(request):
+    if request.method == 'POST':
+        form = SongForm(request.POST)
+        if form.is_valid():
+            song = form.save()
+
+            return redirect('detail-groupe', song.band.id)
+
+    else:
+        form = SongForm()
+    return render(request,
+            'listings/songCreate.html',
+            {'form': form})
