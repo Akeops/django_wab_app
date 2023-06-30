@@ -18,7 +18,7 @@
     <ul>
         {% for song in songs %}
           {% if song.band.id == band.id %}
-                <li>{{ song.name }}</a></li>
+                <li>{{ song.name }} | {{ song.duration }} min | <a href="{% url 'update-song' song.id %}">[Editer]</a></li>
           {% endif %}
         {% endfor %}
     </ul>

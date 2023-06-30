@@ -1,0 +1,13 @@
+{% extends 'listings/base.html' %}
+{% block content %}
+<title>Modifier une musique</title>
+
+<h1>Modifier une musique</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Envoyer">
+</form>
+
+{% endblock %}

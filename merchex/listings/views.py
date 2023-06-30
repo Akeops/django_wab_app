@@ -91,3 +91,20 @@ def updateBand(request, id):
     return render(request,
                   'listings/updateBand.html',
                   {'form': form})
+
+def updateSong(request, id):
+    song = Song.objects.get(id=id)
+
+    if request.method == 'POST':
+        form = SongForm(request.POST, instance=song)
+
+        if form.is_valid():
+            form.save()
+            return redirect('detail-groupe', song.band.id)
+
+    else:
+        form = SongForm(instance=song)
+
+    return render(request,
+                  'listings/updateSong.html',
+                  {'form': form})

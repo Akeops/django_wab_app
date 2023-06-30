@@ -16,7 +16,7 @@
     <h1>Musiques</h1>
     <ul>
         {% for song in songs %}
-                <li><a href="{% url 'detail-groupe' song.band.id %}">{{ song.name }}</a></li>
+                <li><a href="{% url 'detail-groupe' song.band.id %}">{{ song.name }}</a> - <a href="{% url 'update-song' song.id %}">[Editer]</a></li></li>
         {% endfor %}
     </ul>
 
