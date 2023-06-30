@@ -74,3 +74,20 @@ def songCreate(request):
     return render(request,
             'listings/songCreate.html',
             {'form': form})
+
+def updateBand(request, id):
+    band = Band.objects.get(id=id)
+
+    if request.method == 'POST':
+        form = BandForm(request.POST, instance=band)  # on pré-remplir le formulaire avec un groupe existant
+
+        if form.is_valid():
+            form.save()
+            return redirect('detail-groupe', band.id)
+
+    else:
+        form = BandForm(instance=band)
+
+    return render(request,
+                  'listings/updateBand.html',
+                  {'form': form})
